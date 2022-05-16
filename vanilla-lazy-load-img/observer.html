@@ -29,7 +29,7 @@
       <img src="./lazy.png" data-src="./Lenna.jpg" />
       <script>
         const images = document.querySelectorAll('img')
-        const observer = new IntersectionObserver((entrie) => {
+        const observer = new IntersectionObserver((entry) => {
           if (entry.isIntersecting) {
             if ('src' in entry.target.dataset) {
               entry.target.src = entry.target.dataset.src
