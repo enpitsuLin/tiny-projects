@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lazy-load-scroll-event</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100%;
+        height: 200vh;
+        overflow: hidden;
+        text-align: center;
+      }
+      .block {
+        height: 100vh;
+        background: #eeeeee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="block"></div>
+      <img src="./lazy.png" data-src="./Lenna.jpg" />
+      <script>
+        const images = document.querySelectorAll('img')
+        const observer = new IntersectionObserver((entrie) => {
+          if (entry.isIntersecting) {
+            if ('src' in entry.target.dataset) {
+              entry.target.src = entry.target.dataset.src
+            }
+          }
+        })
+        images.forEach((image) => {
+          observer.observe(image)
+        })
+      </script>
+    </div>
+  </body>
+</html>
